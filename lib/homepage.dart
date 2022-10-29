@@ -34,8 +34,6 @@ class _HomePageState extends State<HomePage> {
 
     bombLocation = getBombLocation();
 
-    print(bombLocation);
-
     scanBombs();
   }
 
@@ -43,10 +41,12 @@ class _HomePageState extends State<HomePage> {
     List<int> currentBombLocation = [];
     Random random = Random();
     for (var i = 0; i < 10; i++) {
-      int randomLocation = random.nextInt(numberOfSquares);
-      if (!currentBombLocation.contains(randomLocation)) {
-        currentBombLocation.add(randomLocation);
-      }
+      do {
+        int randomLocation = random.nextInt(numberOfSquares);
+        if (!currentBombLocation.contains(randomLocation)) {
+          currentBombLocation.add(randomLocation);
+        }
+      } while (currentBombLocation.length == i);
     }
     return currentBombLocation;
   }
@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
       for (var i = 0; i < numberOfSquares; i++) {
         squareStatus[i][1] = false;
       }
+      bombLocation = getBombLocation();
     });
   }
 

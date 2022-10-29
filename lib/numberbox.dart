@@ -20,6 +20,7 @@ class MyNumberBox extends StatelessWidget {
               revealed ? (child == 0 ? '' : child.toString()) : '',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 28,
                 color: child == 1
                     ? Colors.blue
                     : (child == 2 ? Colors.green : Colors.red),
